@@ -24,17 +24,6 @@ namespace leetcode
       return char.IsDigit(c);
     }
 
-    private string reverse(string aString)
-    {
-      var result = "";
-      for (int i = aString.Length - 1; i >= 0; i--)
-      {
-        result += aString[i];
-      }
-
-      return result;
-    }
-
     private int convertToInteger(string theString, bool isNegative)
     {
       long multiplier = isNegative ? -1 : 1;
@@ -114,7 +103,8 @@ namespace leetcode
         "2147483648",
         "-6147483648",
         "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000522545459",
-        "--2"
+        "--2",
+        "-d3424",
       };
 
       var expected = new int[] {
@@ -135,7 +125,8 @@ namespace leetcode
         Int32.MaxValue,
         Int32.MinValue,
         Int32.MaxValue,
-        0
+        0,
+        0,
       };
 
       var actual = new int[expected.Length];

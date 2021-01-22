@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/leetcode.csproj",
+                "${workspaceFolder}/29-DivideTwoIntegers/29-DivideTwoIntegers.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/leetcode.csproj",
+                "${workspaceFolder}/29-DivideTwoIntegers/29-DivideTwoIntegers.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,11 +32,27 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/leetcode.csproj",
+                "${workspaceFolder}/29-DivideTwoIntegers/29-DivideTwoIntegers.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+          "label": "test",
+          "group": {
+            "kind": "test",
+            "isDefault": true
+          },
+          "command": "dotnet",
+          "type": "shell",
+          "args": [
+            "watch",
+            "-p",
+            "${workspaceFolder}/29-DivideTwoIntegers/29-DivideTwoIntegers.csproj",
+            "test",
+          ],
+          "problemMatcher": "$msCompile"
         }
     ]
 }
