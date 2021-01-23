@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/29-DivideTwoIntegers/bin/Debug/net5.0/29-DivideTwoIntegers.dll",
+            "program": "${workspaceFolder}/visa-hackerrank-2021-01-23/bin/Debug/net5.0/visa-hackerrank-2021-01-23.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/29-DivideTwoIntegers",
+            "cwd": "${workspaceFolder}/visa-hackerrank-2021-01-23",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
