@@ -48,39 +48,23 @@ namespace visa_hackerrank_2021_01_23
 
   class gameWinnerResult
   {
-    static bool hasAnotherMove(string colors, string player)
-    {
-      string piecesString;
-      switch (player)
-      {
-        case "wendy":
-          piecesString = "www";
-          break;
-        case "bob":
-          piecesString = "bbb";
-          break;
-        default:
-          throw new Exception($"Unexpected player: {player}!");
-      }
-      var index = colors.IndexOf(piecesString);
-      return index >= 0;
-    }
-
     public static string gameWinner(string colors)
     {
       // Perform Wendy's turn
-      if (!hasAnotherMove(colors, "wendy"))
+      var index = colors.IndexOf("www");
+      if (index < 0)
       {
         return "bob";
       }
-      colors = colors.Remove(colors.IndexOf("www"), 1);
+      colors = colors.Remove(index, 1);
 
       // Perform Bob's turn
-      if (!hasAnotherMove(colors, "bob"))
+      index = colors.IndexOf("bbb");
+      if (index < 0)
       {
         return "wendy";
       }
-      colors = colors.Remove(colors.IndexOf("bbb"), 1);
+      colors = colors.Remove(index, 1);
 
       // Repeat
       return gameWinnerResult.gameWinner(colors);
