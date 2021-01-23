@@ -4,7 +4,7 @@ using Xunit;
 
 namespace visa_hackerrank_2021_01_23
 {
-  class Result
+  class canConstructLetterResult
   {
     static string sortString(string unsorted)
     {
@@ -46,7 +46,72 @@ namespace visa_hackerrank_2021_01_23
     }
   }
 
-  public class VisaHackerrank_Test
+  class gameWinnerResult
+  {
+    static bool hasAnotherMove(string colors, string player)
+    {
+      string piecesString;
+      switch (player)
+      {
+        case "wendy":
+          piecesString = "www";
+          break;
+        case "bob":
+          piecesString = "bbb";
+          break;
+        default:
+          throw new Exception($"Unexpected player: {player}!");
+      }
+      var index = colors.IndexOf(piecesString);
+      return index >= 0;
+    }
+
+    public static string gameWinner(string colors)
+    {
+      // Perform Wendy's turn
+      if (!hasAnotherMove(colors, "wendy"))
+      {
+        return "bob";
+      }
+      colors = colors.Remove(colors.IndexOf("www"), 1);
+
+      // Perform Bob's turn
+      if (!hasAnotherMove(colors, "bob"))
+      {
+        return "wendy";
+      }
+      colors = colors.Remove(colors.IndexOf("bbb"), 1);
+
+      // Repeat
+      return gameWinnerResult.gameWinner(colors);
+    }
+  }
+
+  public class VisaHackerrank_Test_gameWinner
+  {
+    public static IEnumerable<object[]> generateXUnitCompatibleTestInputs()
+    {
+      var testParameters = new List<(string, string)>() {
+        ("wwwbb", "wendy"),
+        ("wwbbb", "bob"),
+        ("wwwbbbbwww", "bob"),
+      };
+      foreach (var param in testParameters)
+      {
+        yield return new object[] { param };
+      }
+    }
+
+    [Theory]
+    [MemberData(nameof(generateXUnitCompatibleTestInputs))]
+    public void GivenInputVerifyOutput((string colors, string expected) testParameters)
+    {
+      var actual = gameWinnerResult.gameWinner(testParameters.colors);
+      Assert.Equal(testParameters.expected, actual);
+    }
+  }
+
+  public class VisaHackerrank_Test_canConstructLetter
   {
     public static IEnumerable<object[]> generateXUnitCompatibleTestInputs()
     {
@@ -72,7 +137,7 @@ namespace visa_hackerrank_2021_01_23
     [MemberData(nameof(generateXUnitCompatibleTestInputs))]
     public void GivenInputVerifyOutput((string text, string note, bool expected) testParameters)
     {
-      var actual = Result.canConstructLetter(testParameters.text, testParameters.note);
+      var actual = canConstructLetterResult.canConstructLetter(testParameters.text, testParameters.note);
       Assert.Equal(testParameters.expected, actual);
     }
   }
